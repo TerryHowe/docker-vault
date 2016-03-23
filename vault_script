@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ "${1}" != "server" ]
+then
+  exec vault $*
+fi
+/etc/init.d/S01logging start
+exec vault $*

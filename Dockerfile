@@ -9,12 +9,14 @@ ADD https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt /etc
 
 ADD https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip ${VAULT_TMP_FILE}
 COPY S01logging /etc/init.d/S01logging
+COPY vault_script /bin/vault_script
 
-RUN /etc/init.d/S01logging start
+RUN chmod +x /bin/vault_script
+RUN chmod +x /etc/init.d/S01logging
 RUN cd /bin && unzip ${VAULT_TMP_FILE} && chmod +x /bin/vault && rm ${VAULT_TMP_FILE}
 
 EXPOSE 8200
 ENV VAULT_ADDR "http://127.0.0.1:8200"
 
-ENTRYPOINT ["/bin/vault"]
+ENTRYPOINT ["/bin/vault_script"]
 CMD ["server", "-dev"]
