@@ -1,7 +1,7 @@
 FROM progrium/busybox
 MAINTAINER Terry Howe
 ENV REFRESHED_AT 2016-03-23
-ENV VAULT_VERSION 0.0.1
+ENV VAULT_VERSION 0.5.1
 ENV VAULT_TMP_FILE /tmp/vault.zip
 
 # x509 expects certs to be in this file only.
