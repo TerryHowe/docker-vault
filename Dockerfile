@@ -16,7 +16,7 @@ RUN chmod +x /etc/init.d/S01logging
 RUN cd /bin && unzip ${VAULT_TMP_FILE} && chmod +x /bin/vault && rm ${VAULT_TMP_FILE}
 
 EXPOSE 8200
-ENV VAULT_ADDR "http://127.0.0.1:8200"
+ENV VAULT_ADDR "https://127.0.0.1:8200"
 
 ENTRYPOINT ["/bin/vault_script"]
 CMD ["server", "-dev"]
