@@ -17,6 +17,7 @@ RUN cd /bin && unzip ${VAULT_TMP_FILE} && chmod +x /bin/vault && rm ${VAULT_TMP_
 
 EXPOSE 8200
 ENV VAULT_ADDR "https://127.0.0.1:8200"
+ENV VAULT_SKIP_VERIFY "true"
 
 ENTRYPOINT ["/bin/vault_script"]
 CMD ["server", "-dev"]
